@@ -1,0 +1,27 @@
+@import "header";
+
+:root {
+  --mobile-width-max: 1200px;
+  --window-max-width: 1440px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    180deg,
+    #093f19 0%,
+    #03532c 25.43%,
+    #018436 71.09%,
+    #018436 100%
+  );
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: var(--window-max-width);
+}

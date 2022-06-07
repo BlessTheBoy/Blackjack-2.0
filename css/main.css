@@ -1,0 +1,42 @@
+header {
+  display: block;
+  padding: 32px 72px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+  header {
+    display: none;
+  }
+}
+
+:root {
+  --mobile-width-max: 1200px;
+  --window-max-width: 1440px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: -webkit-gradient(linear, left top, left bottom, from(#093f19), color-stop(25.43%, #03532c), color-stop(71.09%, #018436), to(#018436));
+  background: linear-gradient(180deg, #093f19 0%, #03532c 25.43%, #018436 71.09%, #018436 100%);
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: var(--window-max-width);
+}
+/*# sourceMappingURL=main.css.map */
