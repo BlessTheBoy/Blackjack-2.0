@@ -1,14 +1,25 @@
+@import "variables";
 @import "header";
-
-:root {
-  --mobile-width-max: 1200px;
-  --window-max-width: 1440px;
-}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bebas Neue", cursive;
 }
 
 body {
@@ -23,5 +34,5 @@ body {
 }
 
 .container {
-  max-width: var(--window-max-width);
+  max-width: $container-max-width;
 }

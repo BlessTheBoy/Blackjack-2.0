@@ -1,11 +1,44 @@
-header {
-  display: block;
-  padding: 32px 72px;
+@import "variables";
+@import "functions";
+
+.header {
+  @media screen and (max-width: $mobile-max-width) {
+    display: none;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(32) rem(56);
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  @media screen and (max-width: 1200px) {
-    display: none;
+  &-logo {
+    width: rem(200);
+  }
+
+  &-nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+
+    li {
+      color: white;
+      font-size: rem(18);
+      padding: rem(5) rem(32);
+      &:not(:last-child) {
+        border-right: 4px solid white;
+      }
+
+      a:hover,
+      a:focus {
+        color: $peach;
+      }
+
+      &.active {
+        color: $peach;
+      }
+    }
   }
 }
