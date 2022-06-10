@@ -53,6 +53,70 @@
   color: #fabba3;
 }
 
+main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+main .blackjackLogo {
+  width: 18.75rem;
+}
+
+main .blackjackLogo img {
+  width: 100%;
+}
+
+main .tiltInstruction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .tiltInstruction p {
+  font-family: "Bebas Neue", cursive;
+  font-size: 3rem;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 1.4375rem;
+  padding: 0 3rem;
+}
+
+main .tiltInstruction img {
+  width: 8.75rem;
+}
+
+@media screen and (orientation: portrait) and (max-device-width: 1200px) {
+  main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 60px;
+  }
+  main .introtext,
+  main .instruction,
+  main .playername {
+    display: none;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -83,5 +147,16 @@ body {
 
 .container {
   max-width: 1440px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 /*# sourceMappingURL=main.css.map */
