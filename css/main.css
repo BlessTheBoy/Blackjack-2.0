@@ -491,6 +491,7 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, from(#093f19), color-stop(25.43%, #03532c), color-stop(71.09%, #018436), to(#018436));
   background: linear-gradient(180deg, #093f19 0%, #03532c 25.43%, #018436 71.09%, #018436 100%);
   background-repeat: no-repeat;
+  overflow-x: hidden;
 }
 
 .container {
