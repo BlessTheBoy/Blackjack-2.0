@@ -500,7 +500,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
