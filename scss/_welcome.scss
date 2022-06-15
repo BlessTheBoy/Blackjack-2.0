@@ -3,14 +3,48 @@
 
 main {
   flex: 1;
+  .introtext {
+    grid-area: introtext;
+    font-family: $bebas;
+    font-weight: 400;
+    font-size: rem(28);
+    line-height: 1.2;
+    position: relative;
+    // max-width: rem(900);
+
+    &::after {
+      content: "";
+      width: rem(75);
+      height: rem(75);
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $orange;
+      z-index: -2;
+      transform: translate(-70%, -60%);
+    }
+    &::before {
+      content: "";
+      width: rem(75);
+      height: rem(75);
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $yellow;
+      z-index: -1;
+      transform: translate(-50%, -40%);
+    }
+  }
   .blackjackLogo {
+    grid-area: blackjackLogo;
     width: rem(300);
     img {
       width: 100%;
     }
   }
   .tiltInstruction {
-    display: flex;
+    grid-area: tiltInstruction;
+    display: none;
     flex-direction: column;
     align-items: center;
 
@@ -26,12 +60,156 @@ main {
       width: rem(140);
     }
   }
+  .instruction {
+    grid-area: instruction;
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 400;
 
-  @media screen and (orientation: portrait) and (max-device-width: $mobile-max-width) {
+    &-header {
+      font-family: $bebas;
+      font-size: em(32);
+      line-height: 1.2;
+      color: $yellow;
+      margin-bottom: em(4);
+    }
+
+    > div {
+      padding-left: em(20);
+    }
+
+    &-intro {
+      margin-bottom: em(19);
+    }
+    &-list {
+      list-style: none;
+
+      li {
+        display: flex;
+        align-items: center;
+        &:not(:last-child) {
+          margin-bottom: em(15);
+        }
+
+        span:first-child {
+          display: block;
+          margin-right: 0.8em;
+          min-width: em(30);
+          font-family: $bebas;
+          font-size: em(24);
+        }
+      }
+    }
+  }
+  .playername {
+    font-size: 1rem;
+    grid-area: playername;
+    label {
+      font-size: em(28);
+      line-height: 1.2;
+      margin-bottom: em(12);
+      color: $yellow;
+      font-family: $bebas;
+    }
+    input[type="text"] {
+      font-size: 1em;
+      border: none;
+      outline: none;
+      height: em(32);
+      padding: 0 1em;
+      font-family: $bebas;
+      display: block;
+    }
+    button {
+      font-size: em(43);
+      line-height: 1.2;
+      color: #ffffff;
+      height: 1.8em;
+      background-color: $orange;
+      background: #eb3c27;
+      box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+      border-radius: em(75);
+      padding: 0 2.5em;
+      border: none;
+      outline: none;
+      font-family: $bebas;
+      transition: all 0.3s ease-in-out;
+
+      &:disabled {
+        background-color: #8d8d8d;
+        color: #b4b4b4;
+      }
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-width: $mobile-max-width) {
+    padding: rem(32);
+    .introtext {
+      display: none;
+    }
+    .blackjackLogo,
+    .instruction,
+    .playername {
+      display: block;
+    }
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "blackjackLogo blackjackLogo instruction instruction instruction"
+      "playername playername playername playername playername";
+    grid-column-gap: 2rem;
+
+    .blackjackLogo {
+      width: 100%;
+      align-self: center;
+    }
+    .playername {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .instruction {
+      font-size: 0.8rem;
+      align-self: center;
+    }
+    .playername {
+      font-size: 0.85rem;
+      gap: 2em;
+      .inputGroup {
+        flex: 1;
+      }
+      input[type="text"] {
+        width: 100%;
+        max-width: rem(450);
+      }
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    .instruction {
+      font-size: 1.2rem;
+      align-self: center;
+    }
+    .playername {
+      font-size: 1.2rem;
+      align-self: flex-start;
+
+      .inputGroup {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  @media screen and (orientation: portrait) and (max-width: $mobile-max-width) {
     .introtext,
     .instruction,
     .playername {
       display: none;
+    }
+
+    .tiltInstruction {
+      display: flex;
     }
 
     display: flex;
@@ -39,5 +217,59 @@ main {
     justify-content: center;
     align-items: center;
     gap: 60px;
+  }
+
+  @media screen and (min-width: $mobile-max-width) {
+    .introtext,
+    .blackjackLogo,
+    .instruction,
+    .playername {
+      display: block;
+    }
+
+    padding: 0 rem(64);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      ". . introtext introtext introtext introtext"
+      "blackjackLogo blackjackLogo blackjackLogo instruction instruction instruction"
+      "blackjackLogo blackjackLogo blackjackLogo playername playername playername";
+
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+
+    .introtext {
+      justify-self: end;
+    }
+
+    .blackjackLogo {
+      width: 80%;
+      justify-self: center;
+      img {
+        width: 100%;
+      }
+    }
+    .instruction {
+      font-size: 1rem;
+      align-self: flex-start;
+      margin-left: -1.25em;
+    }
+    .playername {
+      font-size: 0.8rem;
+
+      .inputGroup {
+        margin-bottom: 0.8rem;
+        input[type="text"] {
+          width: 100%;
+        }
+      }
+
+      button {
+        font-size: 3rem;
+        width: 100%;
+        height: 5rem;
+      }
+    }
   }
 }

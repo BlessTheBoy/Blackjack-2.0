@@ -59,7 +59,43 @@ main {
           flex: 1;
 }
 
+main .introtext {
+  grid-area: introtext;
+  font-family: "Bebas Neue", cursive;
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  position: relative;
+}
+
+main .introtext::after {
+  content: "";
+  width: 4.6875rem;
+  height: 4.6875rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #eb3c27;
+  z-index: -2;
+  -webkit-transform: translate(-70%, -60%);
+          transform: translate(-70%, -60%);
+}
+
+main .introtext::before {
+  content: "";
+  width: 4.6875rem;
+  height: 4.6875rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fdd944;
+  z-index: -1;
+  -webkit-transform: translate(-50%, -40%);
+          transform: translate(-50%, -40%);
+}
+
 main .blackjackLogo {
+  grid-area: blackjackLogo;
   width: 18.75rem;
 }
 
@@ -68,9 +104,8 @@ main .blackjackLogo img {
 }
 
 main .tiltInstruction {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  grid-area: tiltInstruction;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -93,7 +128,176 @@ main .tiltInstruction img {
   width: 8.75rem;
 }
 
-@media screen and (orientation: portrait) and (max-device-width: 1200px) {
+main .instruction {
+  grid-area: instruction;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+main .instruction-header {
+  font-family: "Bebas Neue", cursive;
+  font-size: 2em;
+  line-height: 1.2;
+  color: #fdd944;
+  margin-bottom: 0.25em;
+}
+
+main .instruction > div {
+  padding-left: 1.25em;
+}
+
+main .instruction-intro {
+  margin-bottom: 1.1875em;
+}
+
+main .instruction-list {
+  list-style: none;
+}
+
+main .instruction-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .instruction-list li:not(:last-child) {
+  margin-bottom: 0.9375em;
+}
+
+main .instruction-list li span:first-child {
+  display: block;
+  margin-right: 0.8em;
+  min-width: 1.875em;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5em;
+}
+
+main .playername {
+  font-size: 1rem;
+  grid-area: playername;
+}
+
+main .playername label {
+  font-size: 1.75em;
+  line-height: 1.2;
+  margin-bottom: 0.75em;
+  color: #fdd944;
+  font-family: "Bebas Neue", cursive;
+}
+
+main .playername input[type="text"] {
+  font-size: 1em;
+  border: none;
+  outline: none;
+  height: 2em;
+  padding: 0 1em;
+  font-family: "Bebas Neue", cursive;
+  display: block;
+}
+
+main .playername button {
+  font-size: 2.6875em;
+  line-height: 1.2;
+  color: #ffffff;
+  height: 1.8em;
+  background-color: #eb3c27;
+  background: #eb3c27;
+  -webkit-box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4.6875em;
+  padding: 0 2.5em;
+  border: none;
+  outline: none;
+  font-family: "Bebas Neue", cursive;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+main .playername button:disabled {
+  background-color: #8d8d8d;
+  color: #b4b4b4;
+}
+
+@media screen and (orientation: landscape) and (max-width: 1200px) {
+  main {
+    padding: 2rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "blackjackLogo blackjackLogo instruction instruction instruction" "playername playername playername playername playername";
+    grid-column-gap: 2rem;
+  }
+  main .introtext {
+    display: none;
+  }
+  main .blackjackLogo,
+  main .instruction,
+  main .playername {
+    display: block;
+  }
+  main .blackjackLogo {
+    width: 100%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  main .playername {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  main .instruction {
+    font-size: 0.8rem;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  main .playername {
+    font-size: 0.85rem;
+    gap: 2em;
+  }
+  main .playername .inputGroup {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  main .playername input[type="text"] {
+    width: 100%;
+    max-width: 28.125rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  main .instruction {
+    font-size: 1.2rem;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  main .playername {
+    font-size: 1.2rem;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+  main .playername .inputGroup {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 1200px) {
   main {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -115,6 +319,150 @@ main .tiltInstruction img {
   main .playername {
     display: none;
   }
+  main .tiltInstruction {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main {
+    padding: 0 4rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: auto auto auto;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: ". . introtext introtext introtext introtext" "blackjackLogo blackjackLogo blackjackLogo instruction instruction instruction" "blackjackLogo blackjackLogo blackjackLogo playername playername playername";
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+  main .introtext,
+  main .blackjackLogo,
+  main .instruction,
+  main .playername {
+    display: block;
+  }
+  main .introtext {
+    -ms-grid-column-align: end;
+        justify-self: end;
+  }
+  main .blackjackLogo {
+    width: 80%;
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+  main .blackjackLogo img {
+    width: 100%;
+  }
+  main .instruction {
+    font-size: 1rem;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    margin-left: -1.25em;
+  }
+  main .playername {
+    font-size: 0.8rem;
+  }
+  main .playername .inputGroup {
+    margin-bottom: 0.8rem;
+  }
+  main .playername .inputGroup input[type="text"] {
+    width: 100%;
+  }
+  main .playername button {
+    font-size: 3rem;
+    width: 100%;
+    height: 5rem;
+  }
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  font-family: "Bebas Neue", cursive;
+  padding: 2rem 4rem;
+  font-size: 1.125rem;
+  margin-top: 5rem;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .footer {
+    display: none;
+  }
+}
+
+.footer-1-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 2rem;
+          column-gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-1-links a {
+  font-family: "Bebas Neue", cursive;
+  display: inline-block;
+  margin: 0 1.5rem;
+  position: relative;
+}
+
+.footer-1-links a:not(:last-child)::after {
+  content: "";
+  height: 100%;
+  width: 3px;
+  background-color: black;
+  position: absolute;
+  right: -1.5rem;
+}
+
+.footer-2-icons {
+  margin-bottom: 1rem;
+}
+
+.footer-2-icons svg {
+  height: 2.5rem;
+}
+
+.footer-2-links {
+  font-family: "Bebas Neue", cursive;
+  text-align: center;
+}
+
+.footer-3-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 2rem;
+          column-gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-3-links {
+  font-family: "Bebas Neue", cursive;
 }
 
 * {
@@ -146,13 +494,13 @@ body {
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1700px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  margin: 0 auto;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;

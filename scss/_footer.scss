@@ -1,0 +1,70 @@
+@import "variables";
+@import "functions";
+
+.footer {
+  @media screen and (max-width: $mobile-max-width) {
+    display: none;
+  }
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: $bebas;
+  padding: rem(32) rem(64);
+  font-size: rem(18);
+  margin-top: 5rem;
+  gap: 2rem;
+
+  &-1 {
+    &-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 2rem;
+      margin-bottom: rem(16);
+    }
+    &-links {
+      a {
+        font-family: $bebas;
+        display: inline-block;
+        margin: 0 1.5rem;
+        position: relative;
+
+        &:not(:last-child)::after {
+          content: "";
+          height: 100%;
+          width: 3px;
+          background-color: black;
+          position: absolute;
+          right: -1.5rem;
+        }
+      }
+    }
+  }
+
+  &-2 {
+    &-icons {
+      margin-bottom: rem(16);
+      svg {
+        height: rem(40);
+      }
+    }
+    &-links {
+      font-family: $bebas;
+      text-align: center;
+    }
+  }
+
+  &-3 {
+    &-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 2rem;
+      margin-bottom: rem(16);
+    }
+    &-links {
+      font-family: $bebas;
+    }
+  }
+}

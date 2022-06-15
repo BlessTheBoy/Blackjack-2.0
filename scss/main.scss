@@ -1,6 +1,7 @@
 @import "variables";
 @import "header";
 @import "welcome";
+@import "footer";
 
 * {
   margin: 0;
@@ -38,8 +39,9 @@ body {
   max-width: $container-max-width;
   display: flex;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  margin: 0 auto;
+  // overflow: hidden;
 
   display: flex;
   flex-direction: column;
