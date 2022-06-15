@@ -367,7 +367,7 @@ main .playername button:disabled {
     font-size: 0.8rem;
   }
   main .playername .inputGroup {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.9rem;
   }
   main .playername .inputGroup input[type="text"] {
     width: 100%;
