@@ -14,6 +14,7 @@
     />
 
     <link rel="stylesheet" href="css/play.css" />
+    <script defer src="js/script.js"></script>
   </head>
   <body>
     <main class="game">
@@ -21,14 +22,14 @@
         <div class="bottom">
           <div class="count">
             <div class="count-user">
-              <p class="playername">BlessTheBoy</p>
+              <p class="playername" id="playername">BlessTheBoy</p>
               <div>
                 <img
                   src="assets/images/playerImage.png"
                   alt="playerAvatar"
                   class="avatar"
                 />
-                <span>20</span>
+                <span id="playerCount">20</span>
               </div>
             </div>
             <div class="count-computer">
@@ -39,20 +40,20 @@
                   alt="computerAvatar"
                   class="avatar"
                 />
-                <span>20</span>
+                <span id="computerCount">20</span>
               </div>
             </div>
           </div>
           <div class="controls">
             <div class="buttons">
-              <button class="button hit">Hit</button>
-              <button class="button stand">Stand</button>
-              <button class="button deal">Deal</button>
+              <button class="button hit" id="hitButton">Hit</button>
+              <button class="button stand" id="standButton">Stand</button>
+              <button class="button deal" id="dealButton">Deal</button>
             </div>
             <div class="scoreboard">
-              <p>Wins: <span>3</span></p>
-              <p>Draws: <span>3</span></p>
-              <p>Losses: <span>3</span></p>
+              <p>Wins: <span id="wins">3</span></p>
+              <p>Draws: <span id="draws">3</span></p>
+              <p>Losses: <span id="losses">3</span></p>
             </div>
           </div>
         </div>
