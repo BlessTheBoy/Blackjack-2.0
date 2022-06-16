@@ -262,6 +262,27 @@
     const form = document.querySelector("#playerNameForm");
     const playernameInput = document.querySelector("#playernameInput");
     const playernameSubmit = document.querySelector("#playernameSubmit");
+    let playername = localStorage.getItem("playername");
+
+    console.log("playername is >>>", playername);
+
+    const submitForm = (e) => {
+      e.preventDefault();
+
+      localStorage.setItem("playername", playernameInput.value);
+      location.assign("/play.html");
+    };
+
+    if (playername) {
+      playernameInput.value = playername;
+      playernameSubmit.disabled = false;
+    }
+
+    document.addEventListener("keypress", function (e) {
+      if (playernameInput.value && (e.keyCode === 13 || e.which === 13)) {
+        submitForm(e);
+      }
+    });
 
     playernameInput.addEventListener("input", (e) => {
       if (e.target.value) {
@@ -272,14 +293,9 @@
     });
 
     form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      let stateObj = {
-        playername: playernameInput.value,
-      };
-
-      history.pushState(stateObj, "Play Blackjack 2.0", "play.html");
-      location.assign("/play");
+      submitform(e);
     });
+
+    document.addEventListener();
   </script>
 </html>

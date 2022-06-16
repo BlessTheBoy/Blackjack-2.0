@@ -33,6 +33,7 @@ body {
     #018436 100%
   );
   width: 100vw;
+  min-height: 100vh;
   background-repeat: no-repeat;
   overflow-x: hidden;
 }
@@ -42,6 +43,7 @@ body {
   display: flex;
   width: 100%;
   min-height: 100vh;
+  height: 100%;
   margin: 0 auto;
   // overflow: hidden;
 

@@ -491,6 +491,7 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, from(#093f19), color-stop(25.43%, #03532c), color-stop(71.09%, #018436), to(#018436));
   background: linear-gradient(180deg, #093f19 0%, #03532c 25.43%, #018436 71.09%, #018436 100%);
   width: 100vw;
+  min-height: 100vh;
   background-repeat: no-repeat;
   overflow-x: hidden;
 }
@@ -502,6 +503,7 @@ body {
   display: flex;
   width: 100%;
   min-height: 100vh;
+  height: 100%;
   margin: 0 auto;
   display: flex;
   -webkit-box-orient: vertical;

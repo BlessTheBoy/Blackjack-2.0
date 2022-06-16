@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,CAAC,CAAC;EACA,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,UAAU,EAAE,UAAU;EACtB,WAAW,EAAE,oBAAoB;CAClC;;AAED,AAAA,IAAI,CAAC;EACH,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EAEZ,gBAAgB,EAAE,wCAAwC;EAC1D,eAAe,EAAE,KAAK;EACtB,mBAAmB,EAAE,aAAa;EAClC,iBAAiB,EAAE,SAAS;CAM7B;;AAJC,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,MAAM;EATtC,AAAA,IAAI,CAAC;IAUD,gBAAgB,EAAE,yCAAyC;IAC3D,mBAAmB,EAAE,UAAU;GAElC",
+    "sources": [
+        "../scss/play.scss",
+        "../scss/_variables.scss",
+        "../scss/_functions.scss"
+    ],
+    "names": [],
+    "file": "play.css"
+}
