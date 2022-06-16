@@ -21,4 +21,218 @@ body {
     background-position: center top;
   }
 }
+
+.potraitContent {
+  display: none;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#093f19), color-stop(25.43%, #03532c), color-stop(71.09%, #018436), to(#018436));
+  background: linear-gradient(180deg, #093f19 0%, #03532c 25.43%, #018436 71.09%, #018436 100%);
+}
+
+.potraitContent .blackjackLogo {
+  width: 18.75rem;
+  margin-bottom: 4rem;
+}
+
+.potraitContent .blackjackLogo img {
+  width: 100%;
+}
+
+.potraitContent .tiltInstruction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.potraitContent .tiltInstruction p {
+  font-family: "Bebas Neue", cursive;
+  font-size: 3rem;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 1.4375rem;
+  padding: 0 3rem;
+}
+
+.potraitContent .tiltInstruction img {
+  width: 8.75rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 1200px) {
+  .potraitContent {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.container {
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+.game .bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 2rem 1rem;
+}
+
+.count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+
+.count > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.count > div .playername {
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.count > div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.count > div div .avatar {
+  width: 2.25rem;
+  z-index: 1;
+}
+
+.count > div div span {
+  width: 4rem;
+  color: black;
+  text-align: center;
+  background-color: #c4c4c4;
+  display: inline-block;
+  margin-left: -0.5rem;
+  font-family: "Bebas Neue", cursive;
+  border-radius: 0.25rem;
+}
+
+.count > .count-computer .playername {
+  text-align: right;
+}
+
+.count > .count-computer div {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.count > .count-computer div span {
+  margin-left: 0rem;
+  margin-right: -0.5rem;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.875rem;
+}
+
+.buttons button {
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.125rem;
+  width: 6.25rem;
+  border: none;
+  outline: none;
+  height: 1.875rem;
+  border-radius: 0.5rem;
+}
+
+.buttons button.hit {
+  background-color: #0904F8;
+  color: white;
+}
+
+.buttons button.stand {
+  background-color: #fdd944;
+  color: black;
+}
+
+.buttons button.deal {
+  background-color: #FC0303;
+  color: white;
+}
+
+.scoreboard {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2.5rem;
+}
+
+.scoreboard p {
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.125rem;
+  color: white;
+}
+
+.scoreboard p span {
+  padding-left: 0.1875rem;
+  font-family: inherit;
+}
 /*# sourceMappingURL=play.css.map */

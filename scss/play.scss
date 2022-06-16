@@ -22,3 +22,167 @@ body {
     background-position: center top;
   }
 }
+
+.potraitContent {
+  display: none;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    #093f19 0%,
+    #03532c 25.43%,
+    #018436 71.09%,
+    #018436 100%
+  );
+
+  .blackjackLogo {
+    width: rem(300);
+    margin-bottom: 4rem;
+    img {
+      width: 100%;
+    }
+  }
+
+  .tiltInstruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      font-family: $bebas;
+      font-size: rem(48);
+      line-height: 1.2;
+      text-align: center;
+      margin-bottom: rem(23);
+      padding: 0 3rem;
+    }
+    img {
+      width: rem(140);
+    }
+  }
+
+  @media screen and (orientation: portrait) and (max-width: $mobile-max-width) {
+    display: flex;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.game {
+  .bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 2rem 1rem;
+  }
+}
+
+.count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(50%);
+
+  > div {
+    display: flex;
+    flex-direction: column;
+
+    .playername {
+      font-family: $bebas;
+      font-size: rem(18);
+      line-height: 1.2;
+      text-align: left;
+      margin-bottom: rem(8);
+      color: white;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      .avatar {
+        width: rem(36);
+        z-index: 1;
+      }
+      span {
+        width: rem(64);
+        color: black;
+        text-align: center;
+        background-color: #c4c4c4;
+        display: inline-block;
+        margin-left: rem(-8);
+        font-family: $bebas;
+        border-radius: rem(4);
+      }
+    }
+  }
+
+  > .count-computer {
+    .playername {
+      text-align: right;
+    }
+    div {
+      flex-direction: row-reverse;
+
+      span {
+        margin-left: rem(0);
+        margin-right: rem(-8);
+      }
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: rem(14);
+
+  button {
+    font-family: $bebas;
+    font-size: rem(18);
+    width: rem(100);
+    border: none;
+    outline: none;
+    height: rem(30);
+    border-radius: rem(8);
+
+    &.hit {
+      background-color: $blue;
+      color: white;
+    }
+    &.stand {
+      background-color: $yellow;
+      color: black;
+    }
+    &.deal {
+      background-color: $red;
+      color: white;
+    }
+  }
+}
+.scoreboard {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: rem(40);
+
+  p {
+    font-family: $bebas;
+    font-size: rem(18);
+    color: white;
+    span {
+      padding-left: rem(3);
+      font-family: inherit;
+    }
+  }
+}
