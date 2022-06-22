@@ -91,6 +91,7 @@ body {
   justify-content: space-between;
   align-items: center;
   transform: translateY(50%);
+  pointer-events: none;
 
   > div {
     display: flex;
@@ -138,6 +139,10 @@ body {
       }
     }
   }
+}
+
+.controls {
+  z-index: 2;
 }
 
 .buttons {
