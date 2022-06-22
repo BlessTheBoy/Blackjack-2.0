@@ -1,7 +1,9 @@
 // Get values from localStorage
 const playerName = localStorage.getItem("playername");
-let score = localStorage.getItem("score");
-let currentGame = localStorage.getItem("score"); // current deck, players and computer deck, and player and computer count
+let score = JSON.parse(localStorage.getItem("score"));
+let currentGame = JSON.parse(localStorage.getItem("currentGame")); // current deck, players and computer deck, and player and computer count
+
+console.log("currentGame", currentGame);
 
 // Getting dom elements
 const playerNameElement = document.querySelector("#playername");
@@ -130,7 +132,7 @@ function getCardValue(card, player) {
 function disablePlayerEvents() {
   hitButton.disabled = true;
   standButton.disabled = true;
-  dealButton.disabled = true;
+  // dealButton.disabled = true;
 }
 function enablePlayerEvents() {
   hitButton.disabled = false;
@@ -180,9 +182,52 @@ function updateState(card, player) {
   }
 }
 
+let result;
+
+function evaluateWinner() {
+  if (playerCount === computerCount) {
+    result = "draw";
+    draws++;
+    drawsElement.textContent = draws;
+  } else if (
+    (playerCount === "BUST!" && Boolean(Number(computerCount))) ||
+    computerCount > playerCount
+  ) {
+    result = "lose";
+    losses++;
+    lossesElement.textContent = losses;
+  } else if (
+    (computerCount === "BUST!" && Boolean(Number(playerCount))) ||
+    computerCount < playerCount
+  ) {
+    result = "win";
+    wins++;
+    winsElement.textContent = wins;
+  }
+  localStorage.setItem("score", JSON.stringify({ wins, draws, losses }));
+  console.log(result);
+}
+
+function updateLocalStore() {
+  const currentGame = {
+    player: {
+      count: playerCount,
+      deck: playerDeck,
+    },
+    computer: {
+      count: computerCount,
+      deck: computerDeck,
+    },
+    deck: currentDeck,
+  };
+  console.log("currentGame", currentGame);
+  localStorage.setItem("currentGame", JSON.stringify(currentGame));
+}
+
 function hit() {
   const card = getRandomCard();
   updateState(card, "player");
+  updateLocalStore();
 }
 
 async function stand() {
@@ -200,9 +245,9 @@ async function stand() {
       (computerCount === playerCount && computerCount > 16)
     ) {
       clearInterval(computerPlayLoop);
-
+      updateLocalStore();
       // Evaluate winner
-      console.log("winner is computer");
+      evaluateWinner();
     }
   }, 1500);
 
@@ -230,12 +275,14 @@ function deal() {
   // Clear cards on screen
   playerDeck = [];
   computerDeck = [];
+  currentDeck = getInitalDeck();
 
   playerCount = 0;
   playerCountElement.textContent = 0;
   computerCount = 0;
   computerCountElement.textContent = 0;
 
+  updateLocalStore();
   enablePlayerEvents();
 }
 
