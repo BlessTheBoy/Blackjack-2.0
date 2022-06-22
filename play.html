@@ -19,6 +19,26 @@
   <body>
     <main class="game">
       <div class="container">
+        <div class="board">
+          <div class="board-player" id="player-board">
+            <div class="card">
+              <img src="assets/images/cards/club10.png" alt="" />
+            </div>
+            <!-- <div class="card">
+              <img src="assets/images/cards/club2.png" alt="" />
+            </div>
+            <div class="card">
+              <img src="assets/images/cards/diamond3.png" alt="" />
+            </div>
+            <div class="card">
+              <img src="assets/images/cards/diamondJ.png" alt="" />
+            </div>
+            <div class="card">
+              <img src="assets/images/cards/spade3.png" alt="" />
+            </div> -->
+          </div>
+          <div class="board-computer" id="computer-board"></div>
+        </div>
         <div class="bottom">
           <div class="count">
             <div class="count-user">
@@ -46,9 +66,7 @@
           </div>
           <div class="controls">
             <div class="buttons">
-              <button class="button hit" id="hitButton" >
-                Hit
-              </button>
+              <button class="button hit" id="hitButton">Hit</button>
               <button class="button stand" id="standButton">Stand</button>
               <button class="button deal" id="dealButton">Deal</button>
             </div>

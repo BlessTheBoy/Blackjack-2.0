@@ -9,6 +9,8 @@ console.log("currentGame", currentGame);
 const playerNameElement = document.querySelector("#playername");
 const playerCountElement = document.querySelector("#playerCount");
 const computerCountElement = document.querySelector("#computerCount");
+const playerBoard = document.querySelector("#player-board");
+const computerBoard = document.querySelector("#computer-board");
 
 // Playbuttons
 const hitButton = document.querySelector("#hitButton");
@@ -226,6 +228,7 @@ function updateLocalStore() {
 
 function hit() {
   const card = getRandomCard();
+  addCard(card, "player");
   updateState(card, "player");
   updateLocalStore();
 }
@@ -236,6 +239,7 @@ async function stand() {
 
   const computerPlayLoop = await setInterval(() => {
     const card = getRandomCard();
+    addCard(card, "computer");
     updateState(card, "computer");
     console.log("computer picked>>>", card);
     if (
@@ -250,24 +254,6 @@ async function stand() {
       evaluateWinner();
     }
   }, 1500);
-
-  // const card = getRandomCard();
-  // updateState(card, "computer");
-  // let loopCount = 0;
-  // while (
-  //   computerCount !== "BUST!" &&
-  //   (computerCount < playerCount || computerCount < 17) &&
-  //   playerCount !== "BUST!" &&
-  //   loopCount < 10
-  // ) {
-  //   console.log("computer picked>>>", computerCount);
-  //   setTimeout(() => {
-  //     const card = getRandomCard();
-  //     updateState(card, "computer");
-  //     console.log("computer picked>>>", card);
-  //   }, 1500);
-  //   loopCount++;
-  // }
 }
 
 function deal() {
@@ -286,19 +272,35 @@ function deal() {
   enablePlayerEvents();
 }
 
-// Hit: pick a random card from the deck
-// Stand: you don't pick a card and the computer can play
-// Deal: you restart that session
-
-// store initial deck of card in an array
-// Hearts, Spades, Clubs, Diamond : 1 - 14
-// How do we pick a radom card from the deck
-// get the current lenght of the deck and pick a random number in that range. get the card at that index.
-// remove the card at that index.
-
-// Add the card to the user stack and calculate user count.
-
 setup();
+
+function addCard(card, player) {
+  // play shuffle sound
+  let imageName = "";
+  let shape = card.slice(-1);
+  let value = card.slice(0, -1);
+
+  if (shape === "H") imageName += "hearts";
+  else if (shape === "D") imageName += "diamond";
+  else if (shape === "S") imageName += "spade";
+  else imageName += "club";
+  imageName += value;
+
+  console.log("ImageName>>>", imageName, shape, value);
+
+  const cardImage = document.createElement("img");
+  cardImage.src = `../assets/images/cards/${imageName}.png`;
+
+  const wrap = document.createElement("div");
+  wrap.classList.add("card");
+  wrap.appendChild(cardImage);
+
+  if (player === "player") {
+    playerBoard.appendChild(wrap);
+  } else {
+    computerBoard.appendChild(wrap);
+  }
+}
 
 hitButton.addEventListener("click", hit);
 standButton.addEventListener("click", stand);
