@@ -22,6 +22,11 @@ const winsElement = document.querySelector("#wins");
 const drawsElement = document.querySelector("#draws");
 const lossesElement = document.querySelector("#losses");
 
+// sounds
+const swish = new Audio("../assets/sounds/swish.m4a");
+const cash = new Audio("../assets/sounds/cash.mp3");
+const aww = new Audio("../assets/sounds/aww.mp3");
+
 let currentDeck,
   player,
   computer,
@@ -36,21 +41,7 @@ let currentDeck,
 function getInitalDeck() {
   let deck = [];
   let shapes = ["H", "D", "S", "C"];
-  let values = [
-    "A",
-    "1",
-    "2",
-    "3",
-    "4",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "J",
-    "Q",
-    "K",
-  ];
+  let values = ["A", "2", "3", "4", '5', "6", "7", "8", "9", "10", "J", "Q", "K"];
 
   values.forEach((value) => {
     shapes.forEach((shape) => {
@@ -91,6 +82,8 @@ function setCurrentGame() {
   computerCountElement.textContent = computerCount;
 
   // populate screen with card
+  playerDeck.forEach((card) => addCard(card, "player"));
+  computerDeck.forEach((card) => addCard(card, "computer"));
 }
 
 function setScores() {
@@ -270,12 +263,12 @@ function deal() {
 
   updateLocalStore();
   enablePlayerEvents();
+  clearScreen();
 }
 
 setup();
 
 function addCard(card, player) {
-  // play shuffle sound
   let imageName = "";
   let shape = card.slice(-1);
   let value = card.slice(0, -1);
@@ -300,6 +293,13 @@ function addCard(card, player) {
   } else {
     computerBoard.appendChild(wrap);
   }
+
+  swish.play();
+}
+
+function clearScreen() {
+  playerBoard.replaceChildren();
+  computerBoard.replaceChildren();
 }
 
 hitButton.addEventListener("click", hit);
