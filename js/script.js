@@ -4,8 +4,6 @@ let score = JSON.parse(localStorage.getItem("score"));
 let currentGame = JSON.parse(localStorage.getItem("currentGame")); // current deck, players and computer deck, and player and computer count
 let result = localStorage.getItem("result");
 
-console.log("currentGame", currentGame);
-
 // Getting dom elements
 const playerNameElement = document.querySelector("#playername");
 const playerCountElement = document.querySelector("#playerCount");
@@ -111,8 +109,8 @@ function setCurrentGame() {
   }
 
   // populate screen with card
-  playerDeck.forEach((card) => addCard(card, "player"));
-  computerDeck.forEach((card) => addCard(card, "computer"));
+  playerDeck.forEach((card) => addCard(card, "player", false));
+  computerDeck.forEach((card) => addCard(card, "computer", false));
 }
 
 function setScores() {
@@ -194,7 +192,6 @@ function updateState(card, player) {
     }
     playerCountElement.textContent = playerCount;
   } else {
-    console.log();
     computerCount += randomCardValue;
     computerDeck.push(card);
 
@@ -240,8 +237,6 @@ function evaluateWinner() {
   }
 
   modal.classList.add("show");
-
-  console.log(result);
 }
 
 function updateLocalStore() {
@@ -256,7 +251,6 @@ function updateLocalStore() {
     },
     deck: currentDeck,
   };
-  console.log("currentGame", currentGame);
   localStorage.setItem("currentGame", JSON.stringify(currentGame));
 }
 
@@ -268,14 +262,12 @@ function hit() {
 }
 
 async function stand() {
-  console.log("running stand>>>");
   disablePlayerEvents();
 
   const computerPlayLoop = await setInterval(() => {
     const card = getRandomCard();
     addCard(card, "computer");
     updateState(card, "computer");
-    console.log("computer picked>>>", card);
     if (
       playerCount === "BUST!" ||
       computerCount > playerCount ||
@@ -294,7 +286,6 @@ async function stand() {
 }
 
 function deal() {
-  console.log("deal clicked>>>>");
   // Clear cards on screen
   playerDeck = [];
   computerDeck = [];
@@ -316,7 +307,7 @@ function deal() {
 
 setup();
 
-function addCard(card, player) {
+function addCard(card, player, playSound = true) {
   let imageName = "";
   let shape = card.slice(-1);
   let value = card.slice(0, -1);
@@ -326,8 +317,6 @@ function addCard(card, player) {
   else if (shape === "S") imageName += "spade";
   else imageName += "club";
   imageName += value;
-
-  console.log("ImageName>>>", imageName, shape, value);
 
   const cardImage = document.createElement("img");
   cardImage.src = `../assets/images/cards/${imageName}.png`;
@@ -342,7 +331,9 @@ function addCard(card, player) {
     computerBoard.appendChild(wrap);
   }
 
-  swish.play();
+  if (playSound) {
+    swish.play();
+  }
 }
 
 function clearScreen() {
@@ -363,3 +354,26 @@ exitButton.addEventListener("click", (e) => {
 });
 
 if (result) deal();
+
+function preloadImages() {
+  const allCards = getInitalDeck();
+  allCards.forEach(async (card) => {
+    let imageName = "";
+    let shape = card.slice(-1);
+    let value = card.slice(0, -1);
+
+    if (shape === "H") imageName += "hearts";
+    else if (shape === "D") imageName += "diamond";
+    else if (shape === "S") imageName += "spade";
+    else imageName += "club";
+    imageName += value;
+
+    const cardImage = document.createElement("img");
+    cardImage.src = `../assets/images/cards/${imageName}.png`;
+    cardImage.onload = () => {
+      console.log("preloaded", imageName);
+    };
+  });
+}
+
+preloadImages();
