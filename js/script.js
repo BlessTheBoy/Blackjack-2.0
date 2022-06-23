@@ -25,7 +25,7 @@ const drawsElements = document.querySelectorAll(".draws");
 const lossesElements = document.querySelectorAll(".losses");
 
 // sounds
-const swish = new Audio("../assets/sounds/swish.m4a");
+const swish = new Audio("../assets/sounds/swish.mp3");
 const cash = new Audio("../assets/sounds/cash.mp3");
 const aww = new Audio("../assets/sounds/aww.mp3");
 const applause = new Audio("../assets/sounds/applause.mp3");
@@ -256,7 +256,7 @@ function updateLocalStore() {
 
 function hit() {
   const card = getRandomCard();
-  addCard(card, "player");
+  addCard(card, "player", true);
   updateState(card, "player");
   updateLocalStore();
 }
@@ -266,7 +266,7 @@ async function stand() {
 
   const computerPlayLoop = await setInterval(() => {
     const card = getRandomCard();
-    addCard(card, "computer");
+    addCard(card, "computer", true);
     updateState(card, "computer");
     if (
       playerCount === "BUST!" ||
@@ -331,9 +331,10 @@ function addCard(card, player, playSound = true) {
     computerBoard.appendChild(wrap);
   }
 
-  if (playSound) {
-    swish.play();
-  }
+  // if (playSound) {
+  // }
+  swish.play();
+  console.log("playing swish");
 }
 
 function clearScreen() {
@@ -370,9 +371,7 @@ function preloadImages() {
 
     const cardImage = document.createElement("img");
     cardImage.src = `../assets/images/cards/${imageName}.png`;
-    cardImage.onload = () => {
-      console.log("preloaded", imageName);
-    };
+    cardImage.onload = () => {};
   });
 }
 
