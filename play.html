@@ -20,23 +20,7 @@
     <main class="game">
       <div class="container">
         <div class="board">
-          <div class="board-player" id="player-board">
-            <!-- <div class="card">
-              <img src="assets/images/cards/club10.png" alt="" />
-            </div> -->
-            <!-- <div class="card">
-              <img src="assets/images/cards/club2.png" alt="" />
-            </div>
-            <div class="card">
-              <img src="assets/images/cards/diamond3.png" alt="" />
-            </div>
-            <div class="card">
-              <img src="assets/images/cards/diamondJ.png" alt="" />
-            </div>
-            <div class="card">
-              <img src="assets/images/cards/spade3.png" alt="" />
-            </div> -->
-          </div>
+          <div class="board-player" id="player-board"></div>
           <div class="board-computer" id="computer-board"></div>
         </div>
         <div class="bottom">
@@ -70,11 +54,26 @@
               <button class="button stand" id="standButton">Stand</button>
               <button class="button deal" id="dealButton">Deal</button>
             </div>
+
             <div class="scoreboard">
-              <p>Wins: <span id="wins">3</span></p>
-              <p>Draws: <span id="draws">3</span></p>
-              <p>Losses: <span id="losses">3</span></p>
+              <p>Wins: <span class="wins" id="wins">3</span></p>
+              <p>Draws: <span class="draws" id="draws">3</span></p>
+              <p>Losses: <span class="losses" id="losses">3</span></p>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <p id="result"></p>
+          <div class="scoreboard">
+            <p>Wins: <span class="wins" id="wins">3</span></p>
+            <p>Draws: <span class="draws" id="draws">3</span></p>
+            <p>Losses: <span class="losses" id="losses">3</span></p>
+          </div>
+          <div class="buttons">
+            <button class="continue" id="continue">Continue</button>
+            <button class="exit" id="exit">Exit</button>
           </div>
         </div>
       </div>

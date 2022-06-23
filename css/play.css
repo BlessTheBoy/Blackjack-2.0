@@ -204,6 +204,11 @@ body {
   border-radius: 0.25rem;
 }
 
+.count > div div span.bust {
+  color: white;
+  background-color: #FC0303;
+}
+
 .count > .count-computer .playername {
   text-align: right;
 }
@@ -262,6 +267,23 @@ body {
   color: white;
 }
 
+.buttons button.continue {
+  background-color: #fdd944;
+  color: white;
+}
+
+.buttons button.exit {
+  border: 1px solid #fdd944;
+  background-color: transparent;
+  color: #fdd944;
+}
+
+.buttons button:disabled {
+  -webkit-filter: grayscale(50%);
+          filter: grayscale(50%);
+  opacity: 0.8;
+}
+
 .scoreboard {
   margin-top: 1rem;
   display: -webkit-box;
@@ -296,5 +318,64 @@ body {
 
 .card img {
   width: 100%;
+}
+
+.modal {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.5s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.modal.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal #result {
+  font-size: 4.5rem;
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+}
+
+.modal #result.win {
+  color: #fdd944;
+}
+
+.modal #result.lose {
+  color: #FC0303;
+}
+
+.modal #result.draw {
+  color: #0904F8;
+}
+
+.modal .scoreboard {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
 }
 /*# sourceMappingURL=play.css.map */

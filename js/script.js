@@ -2,6 +2,7 @@
 const playerName = localStorage.getItem("playername");
 let score = JSON.parse(localStorage.getItem("score"));
 let currentGame = JSON.parse(localStorage.getItem("currentGame")); // current deck, players and computer deck, and player and computer count
+let result = localStorage.getItem("result");
 
 console.log("currentGame", currentGame);
 
@@ -11,6 +12,9 @@ const playerCountElement = document.querySelector("#playerCount");
 const computerCountElement = document.querySelector("#computerCount");
 const playerBoard = document.querySelector("#player-board");
 const computerBoard = document.querySelector("#computer-board");
+const modal = document.querySelector("#modal");
+const resultElement = document.querySelector("#result");
+const exitButton = document.querySelector("#exit");
 
 // Playbuttons
 const hitButton = document.querySelector("#hitButton");
@@ -18,14 +22,15 @@ const standButton = document.querySelector("#standButton");
 const dealButton = document.querySelector("#dealButton");
 
 // Scoreboard
-const winsElement = document.querySelector("#wins");
-const drawsElement = document.querySelector("#draws");
-const lossesElement = document.querySelector("#losses");
+const winsElements = document.querySelectorAll(".wins");
+const drawsElements = document.querySelectorAll(".draws");
+const lossesElements = document.querySelectorAll(".losses");
 
 // sounds
 const swish = new Audio("../assets/sounds/swish.m4a");
 const cash = new Audio("../assets/sounds/cash.mp3");
 const aww = new Audio("../assets/sounds/aww.mp3");
+const applause = new Audio("../assets/sounds/applause.mp3");
 
 let currentDeck,
   player,
@@ -41,7 +46,21 @@ let currentDeck,
 function getInitalDeck() {
   let deck = [];
   let shapes = ["H", "D", "S", "C"];
-  let values = ["A", "2", "3", "4", '5', "6", "7", "8", "9", "10", "J", "Q", "K"];
+  let values = [
+    "A",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K",
+  ];
 
   values.forEach((value) => {
     shapes.forEach((shape) => {
@@ -50,6 +69,10 @@ function getInitalDeck() {
   });
 
   return deck;
+}
+
+function closeModal() {
+  modal.classList.remove("show");
 }
 
 function setCurrentGame() {
@@ -79,7 +102,13 @@ function setCurrentGame() {
   }
 
   playerCountElement.textContent = playerCount;
+  if (playerCount === "BUST!") {
+    playerCountElement.classList.add("bust");
+  }
   computerCountElement.textContent = computerCount;
+  if (computerCount === "BUST!") {
+    computerCountElement.classList.add("bust");
+  }
 
   // populate screen with card
   playerDeck.forEach((card) => addCard(card, "player"));
@@ -91,9 +120,9 @@ function setScores() {
   draws = score?.draws ?? 0;
   losses = score?.losses ?? 0;
 
-  winsElement.textContent = wins;
-  drawsElement.textContent = draws;
-  lossesElement.textContent = losses;
+  winsElements.forEach((element) => (element.textContent = wins));
+  drawsElements.forEach((element) => (element.textContent = draws));
+  lossesElements.forEach((element) => (element.textContent = losses));
 }
 
 function setup() {
@@ -127,7 +156,7 @@ function getCardValue(card, player) {
 function disablePlayerEvents() {
   hitButton.disabled = true;
   standButton.disabled = true;
-  // dealButton.disabled = true;
+  dealButton.disabled = true;
 }
 function enablePlayerEvents() {
   hitButton.disabled = false;
@@ -161,7 +190,7 @@ function updateState(card, player) {
       disablePlayerEvents();
       setTimeout(() => {
         stand();
-      }, 2000);
+      }, 500);
     }
     playerCountElement.textContent = playerCount;
   } else {
@@ -177,29 +206,41 @@ function updateState(card, player) {
   }
 }
 
-let result;
-
 function evaluateWinner() {
   if (playerCount === computerCount) {
     result = "draw";
     draws++;
-    drawsElement.textContent = draws;
   } else if (
     (playerCount === "BUST!" && Boolean(Number(computerCount))) ||
     computerCount > playerCount
   ) {
     result = "lose";
     losses++;
-    lossesElement.textContent = losses;
   } else if (
     (computerCount === "BUST!" && Boolean(Number(playerCount))) ||
     computerCount < playerCount
   ) {
     result = "win";
     wins++;
-    winsElement.textContent = wins;
   }
+  setScores();
   localStorage.setItem("score", JSON.stringify({ wins, draws, losses }));
+  localStorage.setItem("result", result);
+  if (result === "win") {
+    resultElement.textContent = "YOU WON!";
+    resultElement.className = "win";
+    applause.play();
+  } else if (result === "lose") {
+    resultElement.textContent = "YOU LOST!";
+    resultElement.className = "lose";
+    aww.play();
+  } else {
+    resultElement.textContent = "DRAW!";
+    resultElement.className = "draw";
+  }
+
+  modal.classList.add("show");
+
   console.log(result);
 }
 
@@ -244,7 +285,10 @@ async function stand() {
       clearInterval(computerPlayLoop);
       updateLocalStore();
       // Evaluate winner
-      evaluateWinner();
+
+      setTimeout(() => {
+        evaluateWinner();
+      }, 500);
     }
   }, 1500);
 }
@@ -255,11 +299,15 @@ function deal() {
   playerDeck = [];
   computerDeck = [];
   currentDeck = getInitalDeck();
+  result = "";
+  localStorage.setItem("result", result);
 
   playerCount = 0;
   playerCountElement.textContent = 0;
+  playerCountElement.classList.remove("bust");
   computerCount = 0;
   computerCountElement.textContent = 0;
+  computerCountElement.classList.remove("bust");
 
   updateLocalStore();
   enablePlayerEvents();
@@ -305,3 +353,13 @@ function clearScreen() {
 hitButton.addEventListener("click", hit);
 standButton.addEventListener("click", stand);
 dealButton.addEventListener("click", deal);
+modal.addEventListener("click", () => {
+  closeModal();
+  deal();
+});
+exitButton.addEventListener("click", (e) => {
+  e.stopPropagation();
+  location.assign("/");
+});
+
+if (result) deal();
