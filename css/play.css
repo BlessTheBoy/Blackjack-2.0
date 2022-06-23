@@ -118,6 +118,20 @@ body {
   padding: 0 1.5rem;
 }
 
+@media screen and (min-width: 50rem) {
+  .game .board {
+    grid-column-gap: 3rem;
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (min-width: 75rem) {
+  .game .board {
+    grid-column-gap: 4rem;
+    padding: 0 5rem;
+  }
+}
+
 .game .board > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -137,9 +151,31 @@ body {
       align-content: center;
 }
 
+@media screen and (min-width: 50rem) {
+  .game .board > div {
+    -webkit-column-gap: 15px;
+            column-gap: 15px;
+    row-gap: 15px;
+  }
+}
+
+@media screen and (min-width: 75rem) {
+  .game .board > div {
+    -webkit-column-gap: 20px;
+            column-gap: 20px;
+    row-gap: 20px;
+  }
+}
+
 .game .bottom {
   width: 100%;
   padding: 0 2rem 1rem;
+}
+
+@media screen and (min-width: 75rem) {
+  .game .bottom {
+    padding: 0 5rem 3rem;
+  }
 }
 
 .count {
@@ -225,11 +261,33 @@ body {
   margin-right: -0.5rem;
 }
 
+@media screen and (min-width: 75rem) {
+  .count {
+    padding: 0 5rem;
+  }
+  .count > div .playername {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .count > div div .avatar {
+    width: 3.375rem;
+  }
+  .count > div div span {
+    width: 7.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    font-size: 1.5rem;
+  }
+  .count > .count-computer div span {
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+}
+
 .controls {
   z-index: 2;
 }
 
 .buttons {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,6 +308,16 @@ body {
   outline: none;
   height: 1.875rem;
   border-radius: 0.5rem;
+}
+
+@media screen and (min-width: 75rem) {
+  .buttons button {
+    font-size: 1.75rem;
+    letter-spacing: 3px;
+    width: 12.5rem;
+    height: 3rem;
+    border-radius: 0.625rem;
+  }
 }
 
 .buttons button.hit {
@@ -309,6 +377,19 @@ body {
   font-family: inherit;
 }
 
+@media screen and (min-width: 75rem) {
+  .scoreboard {
+    margin-top: 2rem;
+    gap: 3.75rem;
+  }
+  .scoreboard p {
+    font-size: 1.5rem;
+  }
+  .scoreboard p span {
+    padding-left: 0.3125rem;
+  }
+}
+
 .card {
   width: 4.375rem;
   height: -webkit-fit-content;
@@ -318,6 +399,18 @@ body {
 
 .card img {
   width: 100%;
+}
+
+@media screen and (min-width: 50rem) {
+  .card {
+    width: 6.25rem;
+  }
+}
+
+@media screen and (min-width: 75rem) {
+  .card {
+    width: 7.5rem;
+  }
 }
 
 .modal {
@@ -343,7 +436,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal #result {
@@ -377,5 +470,14 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 2rem;
+}
+
+@media screen and (min-width: 75rem) {
+  .modal #result {
+    font-size: 8.75rem;
+  }
+  .modal .scoreboard p {
+    font-size: 2.25rem;
+  }
 }
 /*# sourceMappingURL=play.css.map */

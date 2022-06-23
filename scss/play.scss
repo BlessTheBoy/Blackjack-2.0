@@ -91,6 +91,15 @@ body {
     grid-column-gap: 2rem;
     padding: 0 1.5rem;
 
+    @media screen and (min-width: rem(800)) {
+      grid-column-gap: 3rem;
+      padding: 0 2rem;
+    }
+    @media screen and (min-width: rem(1200)) {
+      grid-column-gap: 4rem;
+      padding: 0 5rem;
+    }
+
     > div {
       display: flex;
       justify-content: center;
@@ -99,6 +108,15 @@ body {
       row-gap: 10px;
       flex-wrap: wrap;
       align-content: center;
+
+      @media screen and (min-width: rem(800)) {
+        column-gap: 15px;
+        row-gap: 15px;
+      }
+      @media screen and (min-width: rem(1200)) {
+        column-gap: 20px;
+        row-gap: 20px;
+      }
     }
   }
   .bottom {
@@ -106,6 +124,10 @@ body {
     // bottom: 0;
     width: 100%;
     padding: 0 2rem 1rem;
+
+    @media screen and (min-width: rem(1200)) {
+      padding: 0 5rem 3rem;
+    }
   }
 }
 
@@ -172,6 +194,31 @@ body {
       }
     }
   }
+
+  @media screen and (min-width: rem(1200)) {
+    padding: 0 5rem;
+
+    > div {
+      .playername {
+        font-size: rem(24);
+        margin-bottom: 1rem;
+      }
+      div {
+        .avatar {
+          width: rem(54);
+        }
+        span {
+          width: rem(120);
+          border-radius: 0 rem(8) rem(8) 0;
+          font-size: rem(24);
+        }
+      }
+    }
+
+    > .count-computer div span {
+      border-radius: rem(8) 0 0 rem(8);
+    }
+  }
 }
 
 .controls {
@@ -179,6 +226,7 @@ body {
 }
 
 .buttons {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,6 +240,14 @@ body {
     outline: none;
     height: rem(30);
     border-radius: rem(8);
+
+    @media screen and (min-width: rem(1200)) {
+      font-size: rem(28);
+      letter-spacing: 3px;
+      width: rem(200);
+      height: rem(48);
+      border-radius: rem(10);
+    }
 
     &.hit {
       background-color: $blue;
@@ -238,6 +294,17 @@ body {
       font-family: inherit;
     }
   }
+
+  @media screen and (min-width: rem(1200)) {
+    margin-top: 2rem;
+    gap: rem(60);
+    p {
+      font-size: rem(24);
+      span {
+        padding-left: rem(5);
+      }
+    }
+  }
 }
 
 .card {
@@ -246,6 +313,13 @@ body {
 
   img {
     width: 100%;
+  }
+
+  @media screen and (min-width: rem(800)) {
+    width: rem(100);
+  }
+  @media screen and (min-width: rem(1200)) {
+    width: rem(120);
   }
 }
 
@@ -264,7 +338,7 @@ body {
 
   &.show {
     display: flex;
-    background-color: rgba($color: #000000, $alpha: 0.5);
+    background-color: rgba($color: #000000, $alpha: 0.7);
   }
 
   #result {
@@ -292,5 +366,16 @@ body {
     display: flex;
     align-items: center;
     gap: 2rem;
+  }
+
+  @media screen and (min-width: rem(1200)) {
+    #result {
+      font-size: rem(140);
+    }
+    .scoreboard {
+      p {
+        font-size: rem(36);
+      }
+    }
   }
 }
