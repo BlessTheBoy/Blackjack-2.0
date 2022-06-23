@@ -114,9 +114,9 @@ function setCurrentGame() {
 }
 
 function setScores() {
-  wins = score?.wins ?? 0;
-  draws = score?.draws ?? 0;
-  losses = score?.losses ?? 0;
+  wins = wins ? wins : score?.wins ?? 0;
+  draws = draws ? draws : score?.draws ?? 0;
+  losses = losses ? losses : score?.losses ?? 0;
 
   winsElements.forEach((element) => (element.textContent = wins));
   drawsElements.forEach((element) => (element.textContent = draws));
